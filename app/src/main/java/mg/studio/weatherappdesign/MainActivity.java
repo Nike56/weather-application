@@ -66,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
                         //设置今天是星期几
                         textView_Today.setText(getWeekOfDate(today));
                         //设置今天的温度
-                        textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()).substring(0,1));
+                        if(weather.getList().get(1).getMain().getTemp()<0){
+                            textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()));
+                        }else {
+                            textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()).substring(0, 1));
+                        }
                         //设置今天的天气大图标
                         imageView_weatherConditionToday.setImageResource(getWeatherImgIdUp(weather.getList().get(1).getWeather().get(0).getDescription()));
                         //设置当前日期
@@ -151,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             OkHttpClient client=new OkHttpClient();
             Request request=new Request.Builder()
-                    .url("http://api.openweathermap.org/data/2.5/forecast?id=1814905&APPID=e9a6dbb8323ea31323e8b75873e0a6cf&lang=zh_cn&units=metric")
+                    .url("http://api.openweathermap.org/data/2.5/forecast?id=1814906&APPID=e9a6dbb8323ea31323e8b75873e0a6cf&lang=zh_cn&units=metric")
                     .build();
 
             try{
