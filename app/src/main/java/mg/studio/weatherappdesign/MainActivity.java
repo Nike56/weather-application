@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                         if(weather.getList().get(1).getMain().getTemp()<0){
                             textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()));
                         }else {
-                            textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()).substring(0, 1));
+                            textView_tempToday.setText(String.valueOf(weather.getList().get(1).getMain().getTemp()).substring(0, String.valueOf(weather.getList().get(1).getMain().getTemp()).indexOf(".")));
                         }
                         //设置今天的天气大图标
                         imageView_weatherConditionToday.setImageResource(getWeatherImgIdUp(weather.getList().get(1).getWeather().get(0).getDescription()));
